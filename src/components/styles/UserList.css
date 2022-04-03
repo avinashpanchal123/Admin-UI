@@ -1,0 +1,14 @@
+.user_container{
+    max-width: 1000px;
+    border: 2px solid black;
+}
+
+.flex_container{
+    display: grid;
+    grid-template-columns: 10% 20% 30% 20% 20%;
+}
+
+
+.check_div{
+    padding-top: 1.3rem;
+}
