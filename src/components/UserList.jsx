@@ -4,6 +4,7 @@ import Header from "./Header";
 import User from "./User";
 import "./styles/UserList.css";
 
+
 function UserList() {
   const [data, setData] = useState([]);
 
@@ -14,15 +15,37 @@ function UserList() {
     const data = result.data;
 
     setData(data);
-  }, [data]);
+  }, []);
+
+  const deleteHandler = (id)=>{
+    console.log(id)
+    const newData = data.filter((el)=>{
+      return el.id !== id
+    })
+    setData(newData)
+  }
   return (
     <>
       <div className="user_container">
         <Header />
-        {data.map((user) => {
-          let { id, name, email, role } = user;
-        return   <User key={id} name={name} email={email} role={role} />;
-        })}
+
+     
+       
+          {data.map((user) => {
+            let { id, name, email, role } = user;
+            return (
+              <User
+                users={data}
+                id={id}
+                key={id}
+                name={name}
+                email={email}
+                role={role}
+                deleteHandler={deleteHandler}
+              />
+            );
+          })}
+       
       </div>
     </>
   );
